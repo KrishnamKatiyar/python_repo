@@ -2,4 +2,4 @@
 
 name = input("Please enter your name : ")
 
-print("Good Afternoon!",name.capitalize())
+print(f"Good Afternoon! {name.title()}")
