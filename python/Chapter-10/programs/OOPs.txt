@@ -1,0 +1,141 @@
+Object-Oriented Programming (OOP) in Python:-
+
+Object-Oriented Programming (OOP) is a programming paradigm that organizes code around objects rather 
+than functions or logic. 
+Python supports OOP, which makes it a powerful language for building reusable and modular applications.
+
+---
+
+Core Concepts of OOP:-
+
+1. Class: A blueprint for creating objects, defining their behavior (methods) and attributes (variables).
+
+2. Object: An instance of a class. It encapsulates data and functions.
+
+3. Attributes and Methods:
+   - Attributes: Variables defined within a class that describe the object’s state.
+   - Methods: Functions within a class that define the behavior of the object.
+
+4. Encapsulation: Restricting direct access to certain attributes/methods to ensure controlled interaction.
+
+5. Inheritance: A mechanism where a new class (child) derives properties and behavior from an existing class (parent).
+
+6. Polymorphism: The ability to use a single interface to represent different data types or classes.
+
+7. Abstraction: Hiding complex implementation details and exposing only the necessary features of an object.
+
+---
+
+Key OOP Features in Python:-
+
+Defining a Class:-
+
+class Animal:
+    def __init__(self, name, sound):
+        self.name = name  # Attribute
+        self.sound = sound  # Attribute
+
+    def speak(self):  # Method
+        return f"{self.name} says {self.sound}"
+
+
+Creating an Object:-
+
+dog = Animal("Dog", "Woof")
+print(dog.speak())  # Output: Dog says Woof
+
+
+---
+
+Encapsulation:-
+Restricting access to private attributes using underscores:
+
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # Private attribute
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+
+
+---
+
+Inheritance:-
+
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def move(self):
+        return "Moving!"
+
+class Car(Vehicle):  # Inheriting from Vehicle
+    def honk(self):
+        return "Beep beep!"
+
+my_car = Car("Toyota")
+print(my_car.move())  # Output: Moving!
+print(my_car.honk())  # Output: Beep beep!
+
+
+---
+
+Polymorphism:-
+Using a single method for different classes:
+
+class Bird:
+    def sound(self):
+        return "Chirp"
+
+class Dog:
+    def sound(self):
+        return "Woof"
+
+# Polymorphism with a common interface:-
+def make_sound(animal):
+    print(animal.sound())
+
+make_sound(Bird())  # Output: Chirp
+make_sound(Dog())  # Output: Woof
+
+---
+
+Abstraction:-
+Using abstract classes with the `abc` module:
+
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+circle = Circle(5)
+print(circle.area())  # Output: 78.5
+
+---
+
+Key Benefits of OOP in Python:-
+1. Code Reusability: Through inheritance and modular design.
+2. Data Security: Encapsulation hides implementation details.
+3. Scalability: Easy to expand by adding new classes or methods.
+4. Maintainability: Structured and modular code.
+
+---
+
+Real-World Applications:-
+- Web Development: Frameworks like Django and Flask use OOP principles.
+- Game Development: Objects like players, enemies, and items are modeled using OOP.
+- GUI Applications: Libraries like Tkinter or PyQt rely on OOP for widget manipulation.
+
+---
