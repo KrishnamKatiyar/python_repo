@@ -1,0 +1,235 @@
+Inheritance in Python-
+Inheritance is one of the fundamental concepts of object-oriented programming (OOP) in Python. 
+It allows a class (child or subclass) to inherit attributes and methods from another class (parent or base class). 
+This facilitates code reuse, modularity, and easier maintenance.
+
+---
+
+What is Inheritance?
+Inheritance is a mechanism in Python that allows a class to derive properties and 
+behaviors (methods) from another class. The new class is called the child class or subclass, and 
+the class it inherits from is called the parent class or base class.
+
+---
+
+Types of Inheritance in Python-
+
+Python supports five types of inheritance:
+
+1. Single Inheritance
+2. Multiple Inheritance
+3. Multilevel Inheritance
+4. Hierarchical Inheritance
+5. Hybrid Inheritance
+
+---
+
+1. Single Inheritance-
+Single inheritance occurs when a child class inherits from one parent class.
+
+```python
+class Parent:
+    def display(self):
+        print("This is the Parent class")
+
+class Child(Parent):  # Child class inherits Parent class
+    def show(self):
+        print("This is the Child class")
+
+# Usage
+obj = Child()
+obj.display()  # Inherited method from Parent
+obj.show()     # Child class method
+```
+
+---
+
+2. Multiple Inheritance-
+In multiple inheritance, a child class can inherit from more than one parent class.
+
+```python
+class Parent1:
+    def display1(self):
+        print("This is Parent1 class")
+
+class Parent2:
+    def display2(self):
+        print("This is Parent2 class")
+
+class Child(Parent1, Parent2):  # Child inherits both Parent1 and Parent2
+    def show(self):
+        print("This is the Child class")
+
+# Usage
+obj = Child()
+obj.display1()
+obj.display2()
+obj.show()
+```
+
+---
+
+3. Multilevel Inheritance-
+In multilevel inheritance, a child class inherits from a parent class, and another class 
+inherits from the child class, forming a chain.
+
+```python
+class Grandparent:
+    def display(self):
+        print("This is the Grandparent class")
+
+class Parent(Grandparent):  # Inherits from Grandparent
+    def show(self):
+        print("This is the Parent class")
+
+class Child(Parent):  # Inherits from Parent
+    def reveal(self):
+        print("This is the Child class")
+
+# Usage
+obj = Child()
+obj.display()  # From Grandparent
+obj.show()     # From Parent
+obj.reveal()   # Child class method
+```
+
+---
+
+4. Hierarchical Inheritance-
+In hierarchical inheritance, multiple child classes inherit from a single parent class.
+
+```python
+class Parent:
+    def display(self):
+        print("This is the Parent class")
+
+class Child1(Parent):  # Inherits Parent
+    def show1(self):
+        print("This is Child1 class")
+
+class Child2(Parent):  # Inherits Parent
+    def show2(self):
+        print("This is Child2 class")
+
+# Usage
+obj1 = Child1()
+obj2 = Child2()
+
+obj1.display()
+obj1.show1()
+
+obj2.display()
+obj2.show2()
+```
+
+---
+
+5. Hybrid Inheritance-
+Hybrid inheritance combines multiple types of inheritance (e.g., multiple and multilevel inheritance). 
+Python uses the Method Resolution Order (MRO) to handle method lookups in such cases.
+
+```python
+class A:
+    def display(self):
+        print("Class A")
+
+class B(A):
+    def show(self):
+        print("Class B")
+
+class C(A):
+    def reveal(self):
+        print("Class C")
+
+class D(B, C):  # Combines multiple and multilevel inheritance
+    def final(self):
+        print("Class D")
+
+# Usage
+obj = D()
+obj.display()  # Resolved using MRO
+obj.show()
+obj.reveal()
+obj.final()
+```
+
+---
+
+Method Resolution Order (MRO)-
+Python uses the **C3 Linearization Algorithm** to determine the order in which classes are 
+searched for methods or attributes. To check the MRO for a class:
+
+```python
+print(D.mro())  # Displays the MRO of class D
+```
+
+Alternatively, you can use:
+
+```python
+help(D)
+```
+
+---
+
+`super()` Function-
+The `super()` function is used to call methods of the parent class from the child class. 
+This is especially useful in constructors.
+
+```python
+class Parent:
+    def __init__(self):
+        print("Parent Constructor")
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()  # Calls Parent's constructor
+        print("Child Constructor")
+
+# Usage
+obj = Child()
+```
+
+Output:
+```
+Parent Constructor
+Child Constructor
+```
+
+---
+
+Overriding Methods-
+A child class can override methods defined in the parent class.
+
+```python
+class Parent:
+    def show(self):
+        print("This is Parent class")
+
+class Child(Parent):
+    def show(self):  # Overriding the method
+        print("This is Child class")
+
+# Usage
+obj = Child()
+obj.show()  # Calls overridden method in Child class
+```
+
+---
+
+Advantages of Inheritance
+
+1. Code Reusability: Allows reuse of code from parent classes.
+2. Maintainability: Easier to manage and maintain code.
+3. Extensibility: Functionality can be extended without modifying the existing code.
+4. Modularity: Makes the code more organized and structured.
+
+---
+
+Summary-
+- Inheritance allows a child class to inherit methods and attributes from a parent class.
+- Python supports single, multiple, multilevel, hierarchical, and hybrid inheritance.
+- The `super()` function is used to access parent class methods or constructors.
+- The Method Resolution Order (MRO) determines the order in which classes are searched.
+
+By leveraging inheritance, developers can write cleaner, more reusable, and maintainable code.
+
